@@ -1,0 +1,40 @@
+@charset "utf-8";
+h1{
+	font-size: 40px;
+	color:#921CEB
+	
+
+	
+	
+}
+
+
+h4{
+	font-size: 15px;
+	font-family:Verdana;
+	color:#071DCD
+}
+body {
+	
+  font-family: "Audiowide", sans-serif;
+    background: url("pexels-pixabay-325876.jpg"); no-repeat center center fixed;
+	height:100%;
+	margin:0
+	padding:0;	
+    background-size: cover;
+	background-position:center;
+	background-attachment:fixed; 
+	width: 100%;
+	max-width:100vw;
+	overflow-x: auto;  
+	box-sizing: border-box;
+	
+}
+
+
+table {
+	background-color:black;
+	
+	
+	
+}
