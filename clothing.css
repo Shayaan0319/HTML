@@ -1,0 +1,48 @@
+@charset "utf-8";
+h1{
+	font-size: 40px;
+	color:#0A02B9	
+	
+}
+
+
+h4{
+	font-size: 15px;
+	font-family:Verdana;
+	color:#ECE407;
+}
+body {
+	
+	font-family: "Audiowide", sans-serif;
+  background: url("pexels-pixabay-325876.jpg") no-repeat center center fixed;
+  height: 100%;
+  margin: 0;
+  padding: 0;	
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; 
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;  
+  box-sizing: border-box;
+	
+}
+
+
+table {
+	border-collapse:collapse;	
+	border-color:black;
+	background-color:black; 
+}
+
+
+h2 {
+	
+	color:chocolate;
+}
+	
+p  {
+	color:chocolate;
+}	
+
+
