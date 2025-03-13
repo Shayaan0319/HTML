@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Fashion World</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+	
+<style>
+    html, body {
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+    }
+    .content-section {
+        min-height: 500px;
+        padding: 20px;
+        text-align: center;
+    }
+    .image-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 30px;
+    }
+    .gallery-item {
+        text-align: center;
+        margin: 10px;
+    }
+    .gallery-item img {
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+        border: 2px solid #333;
+    }
+    .price {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+    .checkout {
+        display: block;
+        width: 200px;
+        margin: 20px auto;
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 5px;
+    }
+</style>
+<link href="clothinig.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <th width="500" height="80" scope="col"><h1>Fashion World</h1></th>
+      <th width="250" scope="col"><a href="../../Documents/clothing.txt">Clothing</a></th>
+      <th width="250" scope="col"><a href="../../Documents/shoes.txt">Shoes</a></th>
+      <th width="250" scope="col"><a href="../../Documents/accessories.txt">Accessories</a></th>
+    </tr>
+  </tbody>
+</table>
+<div class="content-section">
+    <h2>Our Collection</h2>
+    <div class="image-gallery">
+        <div class="gallery-item">
+            <img src="image1.jpg" alt="Item 1">
+            <div class="price">$0</div>
+        </div>
+        <div class="gallery-item">
+            <img src="image2.jpg" alt="Item 2">
+            <div class="price">$0</div>
+        </div>
+        <div class="gallery-item">
+            <img src="image3.jpg" alt="Item 3">
+            <div class="price">$0</div>
+        </div>
+    </div>
+    <a href="checkout.html" class="checkout">Proceed to Checkout</a>
+</div>
+</body>
+</html>
+
+
