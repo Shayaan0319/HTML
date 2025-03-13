@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<link href="checkout.css" rel="stylesheet" type="text/css">
+<head>
+<meta charset="utf-8">
+<title>Checkout</title>
+	
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <th width="500" height="80" scope="col"><h1>Fashion World</h1></th>
+      <th width="250" scope="col"><a href="../../Documents/clothing.txt">Clothing</a></th>
+      <th width="250" scope="col"><a href="../../Documents/shoes.txt">Shoes</a></th>
+      <th width="250" scope="col"><a href="../../Documents/accessories.txt">Accessories</a></th>
+    </tr>
+  </tbody>
+</table>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+    }
+    .cart {
+        width: 50%;
+        margin: auto;
+        border-collapse: collapse;
+    }
+    .cart th, .cart td {
+        border: 1px solid #333;
+        padding: 10px;
+    }
+    .total {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+    .checkout-button {
+        display: block;
+        width: 200px;
+        margin: 20px auto;
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 5px;
+    }
+</style>
+<script>
+    function calculateTotal() {
+        let prices = [0, 0, 0]; 
+        let total = prices.reduce((sum, price) => sum + price, 0);
+        document.getElementById("total-price").innerText = "$" + total;
+    }
+    window.onload = calculateTotal;
+</script>
+</head>
+<body>
+    <h1>Checkout</h1>
+    <table class="cart">
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td>Item 1</td>
+            <td>$0</td>
+        </tr>
+        <tr>
+            <td>Item 2</td>
+            <td>$0</td>
+        </tr>
+        <tr>
+            <td>Item 3</td>
+            <td>$0</td>
+        </tr>
+    </table>
+    <div class="total">Total: <span id="total-price"></span></div>
+    <a href="#" class="checkout-button">Complete Purchase</a>
+</body>
+</html>
