@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<link href="accessories.css" rel="stylesheet" type="text/css">
+<head>
+<meta charset="utf-8">
+<title>Accessories</title>
+	
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <th width="500" height="80" scope="col"><h1>Fashion World</h1></th>
+      <th width="250" scope="col"><a href="../../Documents/clothing.txt">Clothing</a></th>
+      <th width="250" scope="col"><a href="../../Documents/shoes.txt">Shoes</a></th>
+      <th width="250" scope="col"><a href="../../Documents/accessories.txt">Accessories</a></th>
+    </tr>
+  </tbody>
+</table>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+    }
+    .image-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 30px;
+    }
+    .gallery-item {
+        text-align: center;
+        margin: 10px;
+    }
+    .gallery-item img {
+        width: 200px;
+        height: 150px;
+        object-fit: cover;
+        border: 2px solid #333;
+    }
+    .price {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 5px 0;
+    }
+    .add-to-cart {
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+    .checkout-button {
+        display: block;
+        width: 200px;
+        margin: 20px auto;
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 5px;
+    }
+</style>
+<script>
+    let cart = [];
+    function addToCart(item, price) {
+        cart.push({ item, price });
+        alert(item + " added to cart!");
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }
+</script>
+</head>
+<body>
+    <h1>Accessories</h1>
+    <div class="image-gallery">
+        <div class="gallery-item">
+            <img src="accessory1.jpg" alt="Accessory 1">
+            <div class="price">$0</div>
+            <button class="add-to-cart" onclick="addToCart('Accessory 1', 30)">Add to Basket</button>
+        </div>
+        <div class="gallery-item">
+            <img src="accessory2.jpg" alt="Accessory 2">
+            <div class="price">$0</div>
+            <button class="add-to-cart" onclick="addToCart('Accessory 2', 45)">Add to Basket</button>
+        </div>
+        <div class="gallery-item">
+            <img src="accessory3.jpg" alt="Accessory 3">
+            <div class="price">$0</div>
+            <button class="add-to-cart" onclick="addToCart('Accessory 3', 60)">Add to Basket</button>
+        </div>
+    </div>
+    <a href="checkout.html" class="checkout-button">Go to Checkout</a>
+</body>
+</html>
