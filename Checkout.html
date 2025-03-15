@@ -2,195 +2,383 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>checkout</title>
-<script>
-var Cost, GST, PST, Grand_Total;
-
-function tally()
-        {
-        Cost = 0;
-        if (document.orderform.Item1.checked) { Cost = Cost + 26.15;    }
-        if (document.orderform.Item2.checked) { Cost = Cost + 26.10;    }
-        if (document.orderform.Item3.checked) { Cost = Cost + 26;               }
-        if (document.orderform.Item4.checked) { Cost = Cost + 26;               }
-        if (document.orderform.Item5.checked) { Cost = Cost + 26.44;    }
-        if (document.orderform.Item6.checked) { Cost = Cost + 26.01;    }
-        if (document.orderform.Item7.checked) { Cost = Cost + 26;               }
-        if (document.orderform.Item8.checked) { Cost = Cost + 26;               }
-       if (document.orderform.Item9.checked) {  Cost = Cost + 25;               }
-if (document.orderform.Item10.checked) {  Cost = Cost + 5;               }
-if (document.orderform.Item11.checked) {  Cost = Cost + 10;               }
-if (document.orderform.Item12.checked) {  Cost = Cost + 11;               }
-if (document.orderform.Item13.checked) {  Cost = Cost + 12;               }
-if (document.orderform.Item14.checked) {  Cost = Cost + 13;               }
-if (document.orderform.Item15.checked) {  Cost = Cost + 14;               }
-if (document.orderform.Item16.checked) {  Cost = Cost + 15;               }
-if (document.orderform.Item17.checked) {  Cost = Cost + 16;               }
-if (document.orderform.Item18.checked) {  Cost = Cost + 17;               }
-        GST = (Cost * 0.07);
-        PST = (Cost * 0.20);
-
-        Cost = dollar(Cost);
-        GST = dollar(GST);
-        PST = dollar(PST);
-        Grand_Total = parseFloat(Cost) + parseFloat(GST) + parseFloat(PST);
-        Grand_Total = dollar(Grand_Total);
-
-        document.orderform.Total.value = "£" + Cost;
-        document.orderform.GST.value = "£" + GST;
-        document.orderform.PST.value = "£" + PST;
-        document.orderform.GrandTotal.value = "£" + Grand_Total;
-        }
-
-function dollar (amount)
-{
-        amount = parseInt(amount * 100);
-        amount = parseFloat(amount/100);
-        if (((amount) == Math.floor(amount)) && ((amount - Math.floor (amount)) == 0))
-        {
-                amount = amount + ".00"
-                return amount;
-        }
-        if ( ((amount * 10) - Math.floor(amount * 10)) == 0)
-        {
-                amount = amount + "0";
-                return amount;
-        }
-        if ( ((amount * 100) - Math.floor(amount * 100)) == 0)
-        {
-                amount = amount;
-                return amount;
-        }
-        return amount;
-}
-
-//--></script>
-
-	
-	
-<link href="file:///C|/Users/p69791/Downloads/New folder/checkout.css" rel="stylesheet" type="text/css">
+<title>Basket System</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+<style>
+    #basket-panel {
+        display: none;
+        position: fixed;
+        right: 0;
+        top: 100px;
+        width: 300px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 15px;
+        box-shadow: -2px 2px 5px rgba(0,0,0,0.2);
+        z-index: 100;
+    }
+    #basket-icon {
+        cursor: pointer;
+        font-size: 24px;
+        position: fixed;
+        right: 20px;
+        top: 20px;
+    }
+    #checkout-form {
+        max-width: 500px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        display: none;
+    }
+    .checkout-section {
+        margin-bottom: 20px;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+    .basket-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+        border-bottom: 1px solid #eee;
+    }
+    .remove-item {
+        color: red;
+        cursor: pointer;
+    }
+</style>
+<link href="c.css" rel="stylesheet" type="text/css">
 </head>
-
 <body>
-	<td width="8"><tr><center><strong> Order Form </strong></center></tr></td>
-<form method="post" name="orderform" action="P69791@lutonsfc.ac.uk" enctype="text/plain">
-<centre><table width="1000" height="1653" border="0"><tr><td colspan="4"></centre></td></tr>
- <p><input type="checkbox" name="Item1" value="Pink and Beige Saree" onclick="tally()">Pink and Begie Saree (£500)
- -----------------------------------------
- <input type="checkbox" name="Item10" value="Dried Fenugreek Seeds" onclick="tally()">
-Dried Fenugreek Seeds (£5.00)<img src="turmeric-powder.jpg" width="100" height="50" alt=""/>
-<p><input type="checkbox" name="Item2" value="Cumin Seeds" onclick="tally()">Cumin Seeds (£26.10)<img src="turmeric-powder.jpg" width="100" height="50" alt=""/>---------------------------------------
-<input type="checkbox" name="Item11" value="Galangal Root Powder" onclick="tally()">
-Galangal Root Powder (£10.00)<img src="turmeric-powder.jpg" width="100" height="50" alt=""/>
-<p><input type="checkbox" name="Item3" value="Dried Ginger" onclick="tally()">Dried Ginger(£26)<img src="turmeric-powder.jpg" width="100" height="50" alt=""/>--------------------------------------------
-  <input type="checkbox" name="Item12" value="All Spice" onclick="tally()">
-All Spice (£11.00)<img src="turmeric-powder.jpg" width="100" height="50" alt=""/>
-<p><input type="checkbox" name="Item4" value="Tumeric" onclick="tally()">Turmeric  (£26)<img src="turmeric-powder.jpg" width="100" height="50" alt=""/>-------------------------------------------------
-<input type="checkbox" name="Item13" value="Cinnamon" onclick="tally()">
-Cinnamon (£12.00)<img src="turmeric-powder.jpg" width="100" height="50" alt=""/>
-<p><input type="checkbox" name="Item5" value="Thyme" onclick="tally()">Thyme  (£26.44)<img src="turmeric-powder.jpg" width="100" height="50" alt=""/>-----------------------------------------------
-<input type="checkbox" name="Item14" value="Dried Coriander" onclick="tally()">
-Dried Coriander (£13.00)<img src="turmeric-powder.jpg" width="100" height="50" alt=""/>
-<p><input type="checkbox" name="Item6" value="Star Anise" onclick="tally()">Star Anise (£26.10)<img src="turmeric-powder.jpg" width="100" height="50" alt=""/>------------------------------------------
-<input type="checkbox" name="Item15" value="Safron" onclick="tally()">
-Safron (£14.00)<img src="turmeric-powder.jpg" width="100" height="50" alt=""/>
-<p><input type="checkbox" name="Item7" value="Lemon Basil" onclick="tally()">Lemon Basil (£26)<img src="turmeric-powder.jpg" width="100" height="50" alt=""/>-------------------------------------------
-<input type="checkbox" name="Item16" value="Dried Chilli Flakes" onclick="tally()">
-Dried Chilli Flakes (£15.00)<img src="turmeric-powder.jpg" width="100" height="50" alt=""/>
-<p><input type="checkbox" name="Item8" value="Black Cardamom" onclick="tally()">Black Cardamom  (£26)<img src="turmeric-powder.jpg" width="100" height="50" alt=""/>------------------------------------
-<input type="checkbox" name="Item17" value="Dried Oregano" onclick="tally()">
-Dried Oregano(£16.00)<img src="turmeric-powder.jpg" width="100" height="50" alt=""/>
-<p><input type="checkbox" name="Item9" value="Paprika" onclick="tally()">Paprika  (£25)<img src="turmeric-powder.jpg" width="100" height="50" alt=""/>-------------------------------------------------
-<input type="checkbox" name="Item18" value="Curry Powder" onclick="tally()">
-Curry Powder (£17.00)<img src="turmeric-powder.jpg" width="100" height="50" alt=""/>
-
-<tr width-"120"><td width="120"> Total <input type="text" name="Total" value="£0" size="7"></td>
-<td width="120"> VAT (20%)
-  <input type="text" name="PST" value="£0"  size="6" ></td>
-<td width="20"> Delivery (7%)
-  <input type="text" name="GST" value="£0"  size="6"></td>
-<tr><td> Grand Total <input type="text" name="GrandTotal" value="£0" size="8"></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td><strong><u>Delivery Address</u></strong></td></tr>
-<tr><td>Company Name:</td><td colspan="3"><input type="Text" name="Company" size="35" maxlength="40"></td></tr>
-<tr><td>Contact Name:</td><td width=180>First <input type="Text" name="FirstName" size="15" maxlength="20"> Last
-<input type="Text" name="LastName" size="15" maxlength="20"></td></tr>
-<tr><td>Address</td><td><input type="Text" name="Street" size="20" maxlength="40"></td></tr>
-<tr><td>City</td><td><input type="Text" name="City" size="20" maxlength="20"></td><td width="111">County:</td>
-<td width="277"><input type="Text" name="Province" size="20" maxlength="40"></td></tr>
-<tr><td>Country:</td><td><input type="Text" name="Country" size="20" maxlength="20"></td><td>Post Code:</td>
-<td><input type="Text" name="Code" size="9" maxlength="10"></td></tr>
-<tr> <td>Phone:</td><td><input type="Text" name="Area" size="3" maxlength="5"> <input type="Text" name="Phone" size="8" maxlength="10"></td><td>Fax:</td>
-<td><input type="Text" name="AreaFax" size="3" maxlength="5"> <input type="Text" name="Fax" size="8" maxlength="10"></td></tr>
-<tr><td>Email Address:</td><td colspan="2"><input type="Text" name="Email" size="30" maxlength="30"></td></tr>
-<tr>
-  <td colspan="4" height="44"><div class="row">
-  <div class="col-75">
-    <div class="container">
-<form action="/action_page.php">
-<center><h3><strong>Checkout Payment Detail</strong></h3></center>
-  <div class="row">
-          <div class="col-50">
-            <h3>Billing Address</h3>
-            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
-            <label for="email"><i class="fa fa-envelope"></i> Email</label>
-            <input type="text" id="email" name="email" placeholder="john@example.com">
-            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="adr" name="address" placeholder="54 West Street">
-            <label for="city"><i class="fa fa-institution"></i> City</label>
-            <input type="text" id="city" name="city" placeholder="Luton">
-
-            <div class="row">
-              <div class="col-50">
-                <label for="state">County</label>
-                <input type="text" id="state" name="state" placeholder="Bedfordshire">
-              </div>
-              <div class="col-50">
-                <label for="zip">Post Code</label>
-                <input type="text" id="zip" name="zip" placeholder="LU1 1UN">
-              </div>
-            </div>
-          </div>
-
-          <div class="col-50">
-            <h3>Payment</h3>
-            <label for="fname">Accepted Cards</label>
-            <div class="icon-container"><img src="cards.jpg" width="200" height="100" alt=""/>
-              <i class="fa fa-cc-visa" style="color:navy;"></i>
-              <i class="fa fa-cc-amex" style="color:blue;"></i>
-              <i class="fa fa-cc-mastercard" style="color:red;"></i>
-              <i class="fa fa-cc-discover" style="color:orange;"></i>
-            </div>
-            <label for="cname">Name on Card</label>
-            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-            <label for="ccnum">Credit card number</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-            <label for="expmonth">Exp Month</label>
-            <input type="text" id="expmonth" name="expmonth" placeholder="September">
-            <div class="row">
-              <div class="col-50">
-                <label for="expyear">Exp Year</label>
-                <input type="text" id="expyear" name="expyear" placeholder="2018">
-              </div>
-              <div class="col-50">
-                <label for="cvv">CVV</label>
-                <input type="text" id="cvv" name="cvv" placeholder="352">
-              </div>
-            </div>
-          </div>
-         
-<div></td></tr></form>
-<tr><td colspan="2" align="center"><input type="Submit" value="Send Order"></td><td colspan="2" align="center"><input type="RESET" value="Reset Order"></td></tr>
-</form>
-</center>
-
-
-
+    <table width="100%" border="1">
+	  <tbody>
+	    <tr>
+	      <th width="500" height="80" scope="col"><h1>Fashion World</h1></th>
+	      <th width="250" scope="col"> <a href="Untitled-2.html">Clothing</a></th>
+	      <th width="250" scope="col"><a href="Untitled-3.html"../../Documents/shoes.txt"">Shoes</a></th>
+	      <th width="250" scope="col"><a href="Untitled-4.html">Accessories</a></th>
+	      <th width="250" scope="col"><a href="Untitled-5.html">Checkout</a></th>
+	    </tr>
+	  </tbody>
+	</table>
 	
+	<div id="basket-icon" onclick="toggleBasket()">
+    🛒 <span id="basket-count">0</span>
+</div>
+
+<div id="basket-panel">
+    <h2>Your Basket</h2>
+    <div id="basket-items">
+        <!-- Items will be loaded here dynamically -->
+    </div>
+    <div id="basket-total">
+        <strong>Total: $0.00</strong>
+    </div>
+    <button onclick="showCheckout()" style="margin-top: 10px; width: 100%;">Proceed to Checkout</button>
+</div>
+
+
+
+<script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    // Initialize the page
+    window.onload = function() {
+        updateBasketCount();
+        displayBasketItems();
+    };
+    
+    function addToCart(item, price) {
+        cart.push({ item, price });
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateBasketCount();
+        displayBasketItems();
+        alert(item + " added to basket!");
+    }
+    
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateBasketCount();
+        displayBasketItems();
+    }
+    
+    function updateBasketCount() {
+        document.getElementById("basket-count").innerText = cart.length;
+    }
+    
+    function toggleBasket() {
+        const basketPanel = document.getElementById("basket-panel");
+        if (basketPanel.style.display === "block") {
+            basketPanel.style.display = "none";
+        } else {
+            basketPanel.style.display = "block";
+            displayBasketItems();
+        }
+    }
+    
+    function displayBasketItems() {
+        const basketItemsDiv = document.getElementById("basket-items");
+        const basketTotalDiv = document.getElementById("basket-total");
+        
+        // Clear current content
+        basketItemsDiv.innerHTML = "";
+        
+        if (cart.length === 0) {
+            basketItemsDiv.innerHTML = "<p>Your basket is empty</p>";
+            basketTotalDiv.innerHTML = "<strong>Total: $0.00</strong>";
+            return;
+        }
+        
+        // Display each item with remove button
+        cart.forEach((product, index) => {
+            const itemDiv = document.createElement("div");
+            itemDiv.className = "basket-item";
+            itemDiv.innerHTML = `
+                <span>${product.item} - $${product.price.toFixed(2)}</span>
+                <span class="remove-item" onclick="removeFromCart(${index})">✕</span>
+            `;
+            basketItemsDiv.appendChild(itemDiv);
+        });
+        
+        // Calculate and display total
+        const total = cart.reduce((sum, product) => sum + product.price, 0);
+        basketTotalDiv.innerHTML = `<strong>Total: $${total.toFixed(2)}</strong>`;
+    }
+</script>
+
+<style>
+    #basket-panel {
+        display: none;
+        position: fixed;
+        right: 0;
+        top: 100px;
+        width: 300px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 15px;
+        box-shadow: -2px 2px 5px rgba(0,0,0,0.2);
+        z-index: 100;
+    }
+    #basket-icon {
+        cursor: pointer;
+        font-size: 24px;
+        position: fixed;
+        right: 20px;
+        top: 20px;
+    }
+    .basket-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+        border-bottom: 1px solid #eee;
+    }
+    .remove-item {
+        color: red;
+        cursor: pointer;
+    }
+</style>
+
+    
+        
+        <div class="checkout-section">
+            <h3>Personal Details</h3>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" required>
+            
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" required>
+            
+            <label for="address">Delivery Address:</label>
+            <input type="text" id="address" required>
+            
+            <label for="city">City:</label>
+            <input type="text" id="city" required>
+            
+            <label for="postcode">Postcode:</label>
+            <input type="text" id="postcode" required>
+        </div>
+        
+        <div class="checkout-section">
+            <h3>Payment Details</h3>
+            <label for="card-name">Name on Card:</label>
+            <input type="text" id="card-name" required>
+            
+            <label for="card-number">Card Number:</label>
+            <input type="text" id="card-number" required maxlength="16" placeholder="1234 5678 9012 3456">
+            
+            <div style="display: flex; gap: 10px;">
+                <div style="flex: 1;">
+                    <label for="expiry">Expiry Date (MM/YY):</label>
+                    <input type="text" id="expiry" required placeholder="MM/YY" maxlength="5">
+                </div>
+                <div style="flex: 1;">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" required maxlength="3" placeholder="123">
+                </div>
+            </div>
+        </div>
+        
+        <button type="button" onclick="processOrder()">Place Order</button>
+    </div>
+
+<script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    // Initialize the page
+    window.onload = function() {
+        updateBasketCount();
+        displayBasketItems();
+    };
+    
+    function addToCart(item, price) {
+        cart.push({ item, price });
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateBasketCount();
+        displayBasketItems();
+        alert(item + " added to basket!");
+    }
+    
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateBasketCount();
+        displayBasketItems();
+        updateCheckoutItems();
+    }
+    
+    function updateBasketCount() {
+        document.getElementById("basket-count").innerText = cart.length;
+    }
+    
+    function toggleBasket() {
+        const basketPanel = document.getElementById("basket-panel");
+        if (basketPanel.style.display === "block") {
+            basketPanel.style.display = "none";
+        } else {
+            basketPanel.style.display = "block";
+            displayBasketItems();
+        }
+    }
+    
+    function displayBasketItems() {
+        const basketItemsDiv = document.getElementById("basket-items");
+        const basketTotalDiv = document.getElementById("basket-total");
+        
+        // Clear current content
+        basketItemsDiv.innerHTML = "";
+        
+        if (cart.length === 0) {
+            basketItemsDiv.innerHTML = "<p>Your basket is empty</p>";
+            basketTotalDiv.innerHTML = "<strong>Total: $0.00</strong>";
+            return;
+        }
+        
+        // Display each item with remove button
+        cart.forEach((product, index) => {
+            const itemDiv = document.createElement("div");
+            itemDiv.className = "basket-item";
+            itemDiv.innerHTML = `
+                <span>${product.item} - $${product.price.toFixed(2)}</span>
+                <span class="remove-item" onclick="removeFromCart(${index})">✕</span>
+            `;
+            basketItemsDiv.appendChild(itemDiv);
+        });
+        
+        // Calculate and display total
+        const total = cart.reduce((sum, product) => sum + product.price, 0);
+        basketTotalDiv.innerHTML = `<strong>Total: $${total.toFixed(2)}</strong>`;
+    }
+    
+    function showCheckout() {
+        document.getElementById("checkout-form").style.display = "block";
+        
+        if (document.getElementById("basket-panel").style.display === "block") {
+            document.getElementById("basket-panel").style.display = "none";
+        }
+        
+        updateCheckoutItems();
+        window.scrollTo(0, document.getElementById("checkout-form").offsetTop);
+    }
+    
+    function updateCheckoutItems() {
+        const checkoutItemsDiv = document.getElementById("checkout-items");
+        const checkoutTotalDiv = document.getElementById("checkout-total");
+        
+        // Clear current content
+        checkoutItemsDiv.innerHTML = "";
+        
+        if (cart.length === 0) {
+            checkoutItemsDiv.innerHTML = "<p>Your basket is empty</p>";
+            checkoutTotalDiv.innerHTML = "<strong>Total: $0.00</strong>";
+            return;
+        }
+        
+        // Create a summary table
+        let tableHTML = `
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 10px;">
+                <tr>
+                    <th style="text-align: left; padding: 5px; border-bottom: 1px solid #ddd;">Item</th>
+                    <th style="text-align: right; padding: 5px; border-bottom: 1px solid #ddd;">Price</th>
+                </tr>
+        `;
+        
+        cart.forEach(product => {
+            tableHTML += `
+                <tr>
+                    <td style="padding: 5px; border-bottom: 1px solid #eee;">${product.item}</td>
+                    <td style="text-align: right; padding: 5px; border-bottom: 1px solid #eee;">$${product.price.toFixed(2)}</td>
+                </tr>
+            `;
+        });
+        
+        tableHTML += `</table>`;
+        checkoutItemsDiv.innerHTML = tableHTML;
+        
+        // Calculate and display total
+        const total = cart.reduce((sum, product) => sum + product.price, 0);
+        checkoutTotalDiv.innerHTML = `<strong>Total: $${total.toFixed(2)}</strong>`;
+    }
+    
+    function processOrder() {
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let address = document.getElementById("address").value;
+        let city = document.getElementById("city").value;
+        let postcode = document.getElementById("postcode").value;
+        let cardName = document.getElementById("card-name").value;
+        let cardNumber = document.getElementById("card-number").value;
+        let expiry = document.getElementById("expiry").value;
+        let cvv = document.getElementById("cvv").value;
+        
+        // Simple validation
+        if (!name || !email || !address || !city || !postcode || 
+            !cardName || !cardNumber || !expiry || !cvv) {
+            alert("Please fill in all required fields");
+            return;
+        }
+        
+        let total = cart.reduce((sum, product) => sum + product.price, 0);
+        
+        // In a real app, you would send this data to a server for processing
+        alert(`Order placed successfully!\n\nDelivery details:\nName: ${name}\nEmail: ${email}\nAddress: ${address}, ${city}, ${postcode}\n\nTotal: $${total.toFixed(2)}\n\nThank you for your order!`);
+        
+        // Clear cart after successful order
+        localStorage.removeItem("cart");
+        cart = [];
+        updateBasketCount();
+        
+        // Hide checkout form
+        document.getElementById("checkout-form").style.display = "none";
+    }
+</script>
 </body>
 </html>
