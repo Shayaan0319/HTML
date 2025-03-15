@@ -1,21 +1,23 @@
 @charset "utf-8";
 h1{
-	font-family:"Audiowide", sans-serif;
 	font-size: 40px;
-	color:#0A02B9	
+	color:#F8F2F2	
 	
 }
-
+a {
+	
+	color:white
+}
 
 h4{
 	font-size: 15px;
 	font-family:Verdana;
-	color:#ECE407;
+	color:#E91115;
 }
 body {
 	
-	font-family:Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
-  background: url("pexels-pixabay-325876.jpg") no-repeat center center fixed;
+	font-family: "Audiowide", sans-serif;
+  background: white no-repeat center center fixed;
   height: 100%;
   margin: 0;
   padding: 0;	
@@ -35,6 +37,7 @@ table {
 	border-color:black;
 	background-color:black; 
 }
+
 
 html, body {
     min-height: 100vh;
@@ -76,3 +79,4 @@ html, body {
     margin-top: 5px;
     color: #007bff;
     font-size: 16px;
+
