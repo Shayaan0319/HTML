@@ -1,9 +1,13 @@
+
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>Fashion World</title>	
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+	
+
+	
 <style>
 	html, body {
 		min-height: 100vh;
@@ -43,55 +47,173 @@
 	  <tbody>
 	    <tr>
 	      <th width="500" height="80" scope="col"><h1>Fashion World</h1></th>
-	      <th width="250" scope="col"> <a href="../../Documents/clothing.txt">Clothing</a></th>
-	      <th width="250" scope="col"><a href="../../Documents/shoes.txt">Shoes</a></th>
-	      <th width="250" scope="col"><a href="../../Documents/accessories.txt">Accessories</a></th>
-	      <th width="250" scope="col"><a href="checkout.html">Checkout</a></th>
+	      <th width="250" scope="col"><a href="Untitled-2.html">Clothing</a></th>
+	      <th width="250" scope="col"><a href="Untitled-3.html">Shoes</a></th>
+	      <th width="250" scope="col"><a href="Untitled-4.html">Accessories</a></th>
+	      <th width="250" scope="col"><a href="Untitled-5.html">Checkout</a></th>
 	    </tr>
 	  </tbody>
 	</table>
+	
+	
+	
+	<div id="basket-icon" onclick="toggleBasket()">
+    🛒 <span id="basket-count">0</span>
+</div>
+
+<div id="basket-panel">
+    <h2>Your Basket</h2>
+    <div id="basket-items">
+        
+    </div>
+    <div id="basket-total">
+        <strong>Total: $0.00</strong>
+    </div>
+    <button onclick="showCheckout()" style="margin-top: 10px; width: 100%;">Proceed to Checkout</button>
+</div>
+
+
+
+<script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    
+    window.onload = function() {
+        updateBasketCount();
+        displayBasketItems();
+    };
+    
+    function addToCart(item, price) {
+        cart.push({ item, price });
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateBasketCount();
+        displayBasketItems();
+        alert(item + " added to basket!");
+    }
+    
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateBasketCount();
+        displayBasketItems();
+    }
+    
+    function updateBasketCount() {
+        document.getElementById("basket-count").innerText = cart.length;
+    }
+    
+    function toggleBasket() {
+        const basketPanel = document.getElementById("basket-panel");
+        if (basketPanel.style.display === "block") {
+            basketPanel.style.display = "none";
+        } else {
+            basketPanel.style.display = "block";
+            displayBasketItems();
+        }
+    }
+    
+    function displayBasketItems() {
+        const basketItemsDiv = document.getElementById("basket-items");
+        const basketTotalDiv = document.getElementById("basket-total");
+        
+        
+        basketItemsDiv.innerHTML = "";
+        
+        if (cart.length === 0) {
+            basketItemsDiv.innerHTML = "<p>Your basket is empty</p>";
+            basketTotalDiv.innerHTML = "<strong>Total: $0.00</strong>";
+            return;
+        }
+        
+        
+        cart.forEach((product, index) => {
+            const itemDiv = document.createElement("div");
+            itemDiv.className = "basket-item";
+            itemDiv.innerHTML = `
+                <span>${product.item} - $${product.price.toFixed(2)}</span>
+                <span class="remove-item" onclick="removeFromCart(${index})">✕</span>
+            `;
+            basketItemsDiv.appendChild(itemDiv);
+        });
+        
+        
+        const total = cart.reduce((sum, product) => sum + product.price, 0);
+        basketTotalDiv.innerHTML = `<strong>Total: $${total.toFixed(2)}</strong>`;
+    }
+</script>
+
+<style>
+    #basket-panel {
+        display: none;
+        position: fixed;
+        right: 0;
+        top: 100px;
+        width: 300px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 15px;
+        box-shadow: -2px 2px 5px rgba(0,0,0,0.2);
+        z-index: 100;
+    }
+    #basket-icon {
+        cursor: pointer;
+        font-size: 24px;
+        position: fixed;
+        right: 20px;
+        top: 20px;
+    }
+    .basket-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+        border-bottom: 1px solid #eee;
+    }
+    .remove-item {
+        color: red;
+        cursor: pointer;
+    }
+</style>
 	<div class="content-section">
 	<h2>Featured Products</h2>
 	<p>Discover the latest trends in fashion in Fashion World</p>
 	<div class="image-gallery">
 		<div>
-			<a href="../../Documents/clothes 1.txt">
+			<a href="Untitled-2.html">
 				<img src="clothes 1.avif" alt="Fashion Item 1">
 			</a>
-			<div class="price">$0</div>
+			<div class="price">£25</div>
 		</div>
 		<div>
-			<a href="../../Documents/clothes 1.txt">
+			<a href="Untitled-2.html">
 				<img src="clothes2.avif" alt="Fashion Item 2">
 			</a>
-			<div class="price">$0</div>
+			<div class="price">£20.99</div>
 		</div>
 		<div>
-			<a href="../../Documents/shoes.txt">
+			<a href="Untitled-3.html">
 				<img src="shoes1.avif" alt="Fashion Item 3">
 			</a>
-			<div class="price">$0</div>
+			<div class="price">£55.00</div>
 		</div>
 		<div>
-			<a href="../../Documents/shoes.txt">
+			<a href="Untitled-3.html">
 				<img src="shoes2.avif" alt="Fashion Item 4">
 			</a>
-			<div class="price">$0</div>
+			<div class="price">£110.00</div>
 		</div>
 		<div>
-			<a href="../../Documents/accessories.txt">
+			<a href="Untitled-4.html">
 				<img src="accessories1.avif" alt="Fashion Item 5">
 			</a>
-			<div class="price">$0</div>
+			<div class="price">£15.99</div>
 		</div>
 		<div>
-			<a href="../../Documents/accessories.txt">
+			<a href="Untitled-4.html">
 				<img src="accessories2.avif" alt="Fashion Item 6">
 			</a>
-			<div class="price">$0</div>
+			<div class="price">£35.99</div>
 		</div>
 	</div>
 	</div>
 </body>
 </html>
-
