@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <link href="accessories.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
 <head>
 <meta charset="utf-8">
 <title>Accessories</title>
@@ -9,13 +10,161 @@
   <tbody>
     <tr>
       <th width="500" height="80" scope="col"><h1>Fashion World</h1></th>
-      <th width="250" scope="col"><a href="../../Documents/clothing.txt">Clothing</a></th>
-      <th width="250" scope="col"><a href="../../Documents/shoes.txt">Shoes</a></th>
-      <th width="250" scope="col"><a href="../../Documents/accessories.txt">Accessories</a></th>
+      <th width="250" scope="col"> <a href="Untitled-2.html">Clothing</a></th>
+      <th width="250" scope="col"><a href="Untitled-3.html"../../Documents/shoes.txt"">Shoes</a></th>
+	      <th width="250" scope="col"><a href="Untitled-4.html">Accessories</a></th>
+	      <th width="250" scope="col"><a href="Untitled-5.html">Checkout</a></th>
     </tr>
   </tbody>
 </table>
+	
+<div id="basket-icon" onclick="toggleBasket()">
+    🛒 <span id="basket-count">0</span>
+</div>
+
+<div id="basket-panel">
+    <h2>Your Basket</h2>
+    <div id="basket-items">
+        <!-- Items will be loaded here dynamically -->
+    </div>
+    <div id="basket-total">
+        <strong>Total: $0.00</strong>
+    </div>
+    <button onclick="showCheckout()" style="margin-top: 10px; width: 100%;">Proceed to Checkout</button>
+</div>
+
+
+</div>
+
+<script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    // Initialize the page
+    window.onload = function() {
+        updateBasketCount();
+        displayBasketItems();
+    };
+    
+    function addToCart(item, price) {
+        cart.push({ item, price });
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateBasketCount();
+        displayBasketItems();
+        alert(item + " added to basket!");
+    }
+    
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateBasketCount();
+        displayBasketItems();
+    }
+    
+    function updateBasketCount() {
+        document.getElementById("basket-count").innerText = cart.length;
+    }
+    
+    function toggleBasket() {
+        const basketPanel = document.getElementById("basket-panel");
+        if (basketPanel.style.display === "block") {
+            basketPanel.style.display = "none";
+        } else {
+            basketPanel.style.display = "block";
+            displayBasketItems();
+        }
+    }
+    
+    function displayBasketItems() {
+        const basketItemsDiv = document.getElementById("basket-items");
+        const basketTotalDiv = document.getElementById("basket-total");
+        
+        // Clear current content
+        basketItemsDiv.innerHTML = "";
+        
+        if (cart.length === 0) {
+            basketItemsDiv.innerHTML = "<p>Your basket is empty</p>";
+            basketTotalDiv.innerHTML = "<strong>Total: $0.00</strong>";
+            return;
+        }
+        
+        // Display each item with remove button
+        cart.forEach((product, index) => {
+            const itemDiv = document.createElement("div");
+            itemDiv.className = "basket-item";
+            itemDiv.innerHTML = `
+                <span>${product.item} - $${product.price.toFixed(2)}</span>
+                <span class="remove-item" onclick="removeFromCart(${index})">✕</span>
+            `;
+            basketItemsDiv.appendChild(itemDiv);
+        });
+        
+        // Calculate and display total
+        const total = cart.reduce((sum, product) => sum + product.price, 0);
+        basketTotalDiv.innerHTML = `<strong>Total: $${total.toFixed(2)}</strong>`;
+    }
+</script>
+
 <style>
+    #basket-panel {
+        display: none;
+        position: fixed;
+        right: 0;
+        top: 100px;
+        width: 300px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 15px;
+        box-shadow: -2px 2px 5px rgba(0,0,0,0.2);
+        z-index: 100;
+    }
+    #basket-icon {
+        cursor: pointer;
+        font-size: 24px;
+        position: fixed;
+        right: 20px;
+        top: 20px;
+    }
+    .basket-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+        border-bottom: 1px solid #eee;
+    }
+    .remove-item {
+        color: red;
+        cursor: pointer;
+    }
+</style>
+<style>
+	
+	
+	 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    function addToCart(item, price) {
+        cart.push({ item, price });
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCart();
+    }
+    
+    function updateCart() {
+        let cartContainer = document.getElementById("basket");
+        let total = 0;
+        cartContainer.innerHTML = "<h3>Basket</h3>";
+        cart.forEach(product => {
+            total += product.price;
+            cartContainer.innerHTML += `<p>${product.item}: $${product.price}</p>`;
+        });
+        cartContainer.innerHTML += `<strong>Total: $${total}</strong>`;
+    }
+    
+    function clearCart() {
+        cart = [];
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCart();
+    }
+    
+    window.onload = updateCart;
+</script>
     body {
         font-family: Arial, sans-serif;
         text-align: center;
@@ -73,7 +222,7 @@
 </script>
 </head>
 <body>
-    <h1>Accessories</h1>
+    <h1>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Accessories</h1>
     <div class="image-gallery">
         <div class="gallery-item">
             <img src="accessory1.jpg" alt="Accessory 1">
@@ -91,6 +240,7 @@
             <button class="add-to-cart" onclick="addToCart('Accessory 3', 60)">Add to Basket</button>
         </div>
     </div>
-    <a href="checkout.html" class="checkout-button">Go to Checkout</a>
+    <a href="Untitled-5.html" class="checkout-button">Go to Checkout</a>
 </body>
 </html>
+
