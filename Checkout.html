@@ -77,7 +77,7 @@
 <div id="basket-panel">
     <h2>Your Basket</h2>
     <div id="basket-items">
-        <!-- Items will be loaded here dynamically -->
+        
     </div>
     <div id="basket-total">
         <strong>Total: $0.00</strong>
@@ -129,7 +129,7 @@
         const basketItemsDiv = document.getElementById("basket-items");
         const basketTotalDiv = document.getElementById("basket-total");
         
-        // Clear current content
+        
         basketItemsDiv.innerHTML = "";
         
         if (cart.length === 0) {
@@ -138,7 +138,7 @@
             return;
         }
         
-        // Display each item with remove button
+        
         cart.forEach((product, index) => {
             const itemDiv = document.createElement("div");
             itemDiv.className = "basket-item";
@@ -149,7 +149,7 @@
             basketItemsDiv.appendChild(itemDiv);
         });
         
-        // Calculate and display total
+        
         const total = cart.reduce((sum, product) => sum + product.price, 0);
         basketTotalDiv.innerHTML = `<strong>Total: $${total.toFixed(2)}</strong>`;
     }
@@ -233,7 +233,7 @@
 <script>
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     
-    // Initialize the page
+    
     window.onload = function() {
         updateBasketCount();
         displayBasketItems();
@@ -282,7 +282,7 @@
             return;
         }
         
-        // Display each item with remove button
+        
         cart.forEach((product, index) => {
             const itemDiv = document.createElement("div");
             itemDiv.className = "basket-item";
@@ -313,7 +313,7 @@
         const checkoutItemsDiv = document.getElementById("checkout-items");
         const checkoutTotalDiv = document.getElementById("checkout-total");
         
-        // Clear current content
+       
         checkoutItemsDiv.innerHTML = "";
         
         if (cart.length === 0) {
@@ -322,7 +322,7 @@
             return;
         }
         
-        // Create a summary table
+        
         let tableHTML = `
             <table style="width: 100%; border-collapse: collapse; margin-bottom: 10px;">
                 <tr>
@@ -343,7 +343,7 @@
         tableHTML += `</table>`;
         checkoutItemsDiv.innerHTML = tableHTML;
         
-        // Calculate and display total
+       
         const total = cart.reduce((sum, product) => sum + product.price, 0);
         checkoutTotalDiv.innerHTML = `<strong>Total: $${total.toFixed(2)}</strong>`;
     }
@@ -359,7 +359,7 @@
         let expiry = document.getElementById("expiry").value;
         let cvv = document.getElementById("cvv").value;
         
-        // Simple validation
+        
         if (!name || !email || !address || !city || !postcode || 
             !cardName || !cardNumber || !expiry || !cvv) {
             alert("Please fill in all required fields");
@@ -368,15 +368,15 @@
         
         let total = cart.reduce((sum, product) => sum + product.price, 0);
         
-        // In a real app, you would send this data to a server for processing
+        
         alert(`Order placed successfully!\n\nDelivery details:\nName: ${name}\nEmail: ${email}\nAddress: ${address}, ${city}, ${postcode}\n\nTotal: $${total.toFixed(2)}\n\nThank you for your order!`);
         
-        // Clear cart after successful order
+       
         localStorage.removeItem("cart");
         cart = [];
         updateBasketCount();
         
-        // Hide checkout form
+       
         document.getElementById("checkout-form").style.display = "none";
     }
 </script>
